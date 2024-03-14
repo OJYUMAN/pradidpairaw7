@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
               child: PageViewContainer(),
             ),
             // Slider at the bottom
-            BottomSlider(),
+            //BottomSlider(),
           ],
         ),
 

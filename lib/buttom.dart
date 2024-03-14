@@ -37,6 +37,14 @@ class _BottomSliderState extends State<BottomSlider> {
               });
             },
           ),
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                scale += 0.1; // Increase scale by 0.1
+              });
+            },
+            child: Icon(Icons.zoom_in),
+          ),
           SizedBox(width: 59,)
         ],
       ),
