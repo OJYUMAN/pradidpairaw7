@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'PaperManager.dart';
 
 var scale = 1.0;
+double top = 0.0;
+double left = 0.0;
 
 
 class PageViewContainer extends StatefulWidget {
@@ -12,28 +14,23 @@ class PageViewContainer extends StatefulWidget {
 
 class _FloatingContainerState extends State<PageViewContainer> {
   List<Widget> pagepaper = []; // List to store containers
-  double _top = 0.0;
-
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Positioned(
-          top: _top,
-          left: MediaQuery.of(context).size.width / 2 -
-              420, // Center horizontally
+          top: top,
+          left: left,
+          // left: MediaQuery.of(context).size.width / 2 -
+          //     420, // Center horizontally
           child: Listener(
             onPointerSignal: (PointerSignalEvent event) {
               if (event is PointerScrollEvent) {
                 setState(() {
-                  _top -= event.scrollDelta.dy;
+                  top -= event.scrollDelta.dy;
+                  left -= event.scrollDelta.dx;
                 });
-              }
-            },
-            onPointerPanZoomStart: (PointerPanZoomStartEvent event) {
-              if (event is PointerPanZoomStartEvent) {
-                print("object");
               }
             },
             child: Transform.scale(

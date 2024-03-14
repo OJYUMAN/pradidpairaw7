@@ -29,7 +29,6 @@ class _FloatingContainerState extends State<FloatingContainer> {
   double scale = 0.5;
 
 
-
   @override
   Widget build(BuildContext context) {
     return Stack(
