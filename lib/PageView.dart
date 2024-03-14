@@ -31,6 +31,11 @@ class _FloatingContainerState extends State<PageViewContainer> {
                 });
               }
             },
+            onPointerPanZoomStart: (PointerPanZoomStartEvent event) {
+              if (event is PointerPanZoomStartEvent) {
+                print("object");
+              }
+            },
             child: Transform.scale(
               scale: scale,
               child: Column(

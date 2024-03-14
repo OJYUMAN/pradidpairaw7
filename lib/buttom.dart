@@ -33,6 +33,7 @@ class _BottomSliderState extends State<BottomSlider> {
                 newSliderValue = _currentSliderValue.toInt().toString();
                 scale = value/100;
                 print(scale);
+
               });
             },
           ),
