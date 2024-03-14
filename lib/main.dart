@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:pradidpairaw7/PageView.dart';
+import 'PageView.dart';
+import 'buttom.dart';
+
+
 
 void main() {
   runApp(MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,11 +19,23 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Floating Container'),
         ),
-        body: PageViewContainer(),
+        body: Column(
+          children: [
+            Expanded(
+              child: PageViewContainer(),
+            ),
+            // Slider at the bottom
+            BottomSlider(),
+          ],
+        ),
+
       ),
     );
   }
 }
+
+
+
 
 
 

@@ -2,6 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'PaperManager.dart';
 
+var scale = 1.0;
+
+
 class PageViewContainer extends StatefulWidget {
   @override
   _FloatingContainerState createState() => _FloatingContainerState();
@@ -10,7 +13,7 @@ class PageViewContainer extends StatefulWidget {
 class _FloatingContainerState extends State<PageViewContainer> {
   List<Widget> pagepaper = []; // List to store containers
   double _top = 0.0;
-  double _scale = 1.0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class _FloatingContainerState extends State<PageViewContainer> {
               }
             },
             child: Transform.scale(
-              scale: _scale,
+              scale: scale,
               child: Column(
                 children: [
                   ...pagepaper,
@@ -55,3 +58,4 @@ class _FloatingContainerState extends State<PageViewContainer> {
     );
   }
 }
+
