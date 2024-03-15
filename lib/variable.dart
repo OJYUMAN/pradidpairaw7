@@ -83,9 +83,91 @@ double boxsize = 20.0;
 List<Widget> pages = [];
 var labelarr = [];
 var kroarr = [];
-
+String selectedInstrument2 = 'Ranatek'; // รูปภาพเริ่มต้น
 
 
 var scale = 1.0;
 double top = 0.0;
 double left = 0.0;
+
+final List<String> allNotes = [
+  'E0.wav',
+  'F0.wav',
+  'G0.wav',
+  'A0.wav',
+  'B0.wav',
+  'C.wav',
+  'D.wav',
+  'E.wav',
+  'F.wav',
+  'G.wav',
+  'A.wav',
+  'B.wav',
+  'C2.wav',
+  'D2.wav',
+  'E2.wav',
+  'F2.wav',
+  'G3.wav',
+  "Output 1-2.wav",
+];
+
+final List<String> allNoteshro = [
+  'E0.wav',
+  'F0.wav',
+  'G0k.wav',
+  'A0k.wav',
+  'B0k.wav',
+  'Ck.wav',
+  'Dk.wav',
+  'Ek.wav',
+  'Fk.wav',
+  'Gk.wav',
+  'Ak.wav',
+  'Bk.wav',
+  'C2k.wav',
+  'D2k.wav',
+  'E2k.wav',
+  'F2k.wav',
+  'G3k.wav',
+  "",
+];
+
+final List<String> duoNotes = [
+  'E0.wav',
+  'F0.wav',
+  'G0.wav',
+  'A0.wav',
+  'B0.wav',
+  'C.wav',
+  'D.wav',
+  'E.wav',
+  'F.wav',
+  'G.wav',
+  'A.wav',
+  'B.wav',
+  'C2.wav',
+  'D2.wav',
+  'E2.wav',
+  'F2.wav',
+  'G2.wav',
+  "Output 1-2.wav",
+];
+
+final List<String> ekNotes = [
+  'G0.wav',
+  'A0.wav',
+  'B0.wav',
+  'C.wav',
+  'D.wav',
+  'E.wav',
+  'F.wav',
+  'G.wav',
+  'A.wav',
+  'B.wav',
+  'C2.wav',
+  'D2.wav',
+  'E2.wav',
+  'F2.wav',
+  'G3.wav',
+  "Output 1-2.wav",
+];

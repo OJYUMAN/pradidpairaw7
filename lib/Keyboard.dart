@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'variable.dart';
+import 'simulator.dart';
+import 'EzFunc.dart';
 
 
 
@@ -35,15 +37,15 @@ keyboard(a) {
                         child: InkWell(
                           child: Align(
                             alignment: Alignment.topCenter,
-                            // child: Text(
-                            //   //getTextFromI(i),
-                            //   // ใช้ฟังก์ชัน getTextFromI เพื่อแปลงค่า I เป็นข้อความ
-                            //   textAlign: TextAlign.center,
-                            //   style: TextStyle(
-                            //     fontSize: 20,
-                            //     color: Colors.white,
-                            //   ),
-                            // ),
+                            child: Text(
+                              getTextFromI(i),
+                              // ใช้ฟังก์ชัน getTextFromI เพื่อแปลงค่า I เป็นข้อความ
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
                           onTap: () {
                             switch (i) {
@@ -99,7 +101,7 @@ keyboard(a) {
                             //   if (JK == true) {
                             //     edit();
                             //   }
-                            //   simulator(i);
+                               simulator(i);
                             // });
                           },
                         ),
