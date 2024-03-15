@@ -1,52 +1,103 @@
 import 'package:flutter/material.dart';
-import 'PageView.dart';
-import 'MenuBar.dart';
-import 'package:menu_bar/menu_bar.dart';
-import 'variable.dart';
-import 'Keyboard.dart';
+import 'MainProject.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(newMyApp());
 }
 
-class MyApp extends StatelessWidget {
+class newMyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    keyboardwidth = MediaQuery.of(context).size.width;
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 210, 210, 210),
-        body: SafeArea(
-          child: MenuBarWidget(
-            barButtons: menuBarButtons(),
-            barStyle: const MenuStyle(
-              padding: MaterialStatePropertyAll(EdgeInsets.zero),
-              backgroundColor:
-              MaterialStatePropertyAll(Color.fromARGB(255, 250, 250, 250)),
-              maximumSize: MaterialStatePropertyAll(Size(double.infinity, 28.0)),
+      title: 'Navigation App',
+      home: Screen1(),
+    );
+  }
+}
+
+class Screen1 extends StatefulWidget {
+  @override
+  _Screen1State createState() => _Screen1State();
+}
+
+class _Screen1State extends State<Screen1> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      _showLoginAlert(context);
+    });
+  }
+
+  void _showLoginAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Login"),
+          content: Text("Please log in to continue."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                // Perform actions when login button is pressed
+                Navigator.pop(context); // Close the alert dialog
+              },
+              child: Text("Login"),
             ),
-            barButtonStyle: const ButtonStyle(
-              padding:
-              MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 6.0)),
-              minimumSize: MaterialStatePropertyAll(Size(0.0, 32.0)),
-            ),
-            menuButtonStyle: const ButtonStyle(
-              minimumSize: MaterialStatePropertyAll(Size.fromHeight(36.0)),
-              padding: MaterialStatePropertyAll(
-                  EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0)),
-            ),
-            enabled: true,
-            child: Column(
-              children: [
-                Expanded(
-                  child: PageViewContainer(),
-                ),
-                // Slider at the bottom
-                keyboard(intru),
-                //BottomSlider(),
-              ],
-            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          'Pradidpairaw',
+          style: TextStyle(
+            color: Colors.brown,
+            fontWeight: FontWeight.bold,
           ),
+        ),
+        actions: [
+          TextButton(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.brown,
+              padding: const EdgeInsets.all(10.0),
+              textStyle: const TextStyle(fontSize: 15),
+            ),
+            onPressed: () {},
+            child: const Text('Log in'),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.brown,
+              padding: const EdgeInsets.all(10.0),
+              textStyle: const TextStyle(fontSize: 15),
+            ),
+            onPressed: () {},
+            child: const Text('Sign up'),
+          ),
+        ],
+      ),
+      body: Center(
+        child: ElevatedButton(
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.brown,
+            padding: const EdgeInsets.all(10.0),
+            textStyle: const TextStyle(fontSize: 15),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyApp()),
+            );
+          },
+          child: Text('New Project'),
         ),
       ),
     );

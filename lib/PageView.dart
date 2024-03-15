@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'PaperManager.dart';
 import 'variable.dart';
-import 'main.dart';
+import 'MainProject.dart';
 
 class PageViewContainer extends StatefulWidget {
   @override
