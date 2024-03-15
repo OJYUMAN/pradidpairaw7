@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'PaperManager.dart';
+import 'variable.dart';
+import 'main.dart';
 
-var scale = 1.0;
-double top = 0.0;
-double left = 0.0;
+
 
 class PageViewContainer extends StatefulWidget {
   @override
@@ -77,6 +77,29 @@ class _FloatingContainerState extends State<PageViewContainer> {
                   });
                 },
                 child: Icon(Icons.zoom_in),
+              ),
+              SizedBox(width: 8),
+              FloatingActionButton(
+                backgroundColor: Color.fromARGB(255, 169, 143, 127),
+                onPressed: () {
+                  showkeyboard = !showkeyboard;
+                  print(showkeyboard);
+                  if (showkeyboard == true) {
+                    setState(() {
+                      ranadsize = 200;
+                      main();
+                    });
+                  } else {
+                    setState(() {
+                      ranadsize = 0;
+                      main();
+                    });
+                  }
+                },
+                child: const Icon(
+                  Icons.piano,
+                  color: Colors.black,
+                ),
               ),
             ],
           ),
