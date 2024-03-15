@@ -4,8 +4,6 @@ import 'PaperManager.dart';
 import 'variable.dart';
 import 'main.dart';
 
-
-
 class PageViewContainer extends StatefulWidget {
   @override
   _FloatingContainerState createState() => _FloatingContainerState();
@@ -14,33 +12,43 @@ class PageViewContainer extends StatefulWidget {
 class _FloatingContainerState extends State<PageViewContainer> {
   List<Widget> pagepaper = []; // List to store containers
   double scale = 1.0;
-
+  double _dx = 0.0;
+  double _dy = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    if(left == 0.0){// If the paper is close to the edge Rearrange it to center.
-      left = MediaQuery.of(context).size.width / 2 -420;
+    if (left == 0.0) {
+      // If the paper is close to the edge Rearrange it to center.
+      left = MediaQuery.of(context).size.width / 2 - 420;
     }
     return Stack(
       children: [
         Positioned(
-          top: top,
-          left: left,
-          child: Listener(
-            onPointerSignal: (PointerSignalEvent event) {
-              if (event is PointerScrollEvent) {
-                setState(() {
-                  top -= event.scrollDelta.dy;
-                  left -= event.scrollDelta.dx;
-                });
-              }
+          top: top + _dy,
+          left: left + _dx,
+          child: GestureDetector(
+            onPanUpdate: (details) {
+              setState(() {
+                _dx += details.delta.dx;
+                _dy += details.delta.dy;
+              });
             },
-            child: Transform.scale(
-              scale: scale,
-              child: Column(
-                children: [
-                  ...pagepaper,
-                ],
+            child: Listener(
+              onPointerSignal: (PointerSignalEvent event) {
+                if (event is PointerScrollEvent) {
+                  setState(() {
+                    _dy -= event.scrollDelta.dy;
+                    _dx -= event.scrollDelta.dx;
+                  });
+                }
+              },
+              child: Transform.scale(
+                scale: scale,
+                child: Column(
+                  children: [
+                    ...pagepaper,
+                  ],
+                ),
               ),
             ),
           ),
@@ -50,7 +58,6 @@ class _FloatingContainerState extends State<PageViewContainer> {
           bottom: 16,
           right: 16,
           child: Row(
-            // mainAxisAlignment: MainAxisAlignment.start,
             children: [
               FloatingActionButton(
                 onPressed: () {
@@ -60,16 +67,16 @@ class _FloatingContainerState extends State<PageViewContainer> {
                 },
                 child: Icon(Icons.add),
               ),
-              SizedBox(width: 8), // Spacer
+              SizedBox(width: 8),
               FloatingActionButton(
                 onPressed: () {
                   setState(() {
-                    scale -= 0.1; // Increase scale by 0.1
+                    scale -= 0.1; // Decrease scale by 0.1
                   });
                 },
                 child: Icon(Icons.zoom_out),
               ),
-              SizedBox(width: 8), // Spacer
+              SizedBox(width: 8),
               FloatingActionButton(
                 onPressed: () {
                   setState(() {
